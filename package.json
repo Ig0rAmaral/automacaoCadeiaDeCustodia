@@ -1,0 +1,21 @@
+{
+  "name": "Automação cadeia de custódia do MOP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^18.20.0"
+  },
+  "devDependencies": {
+    "@cypress/xpath": "^2.0.3",
+    "cypress": "^13.7.1",
+    "cypress-browser-extension-plugin": "^0.1.0",
+    "cypress-iframe": "^1.0.1"
+  }
+}

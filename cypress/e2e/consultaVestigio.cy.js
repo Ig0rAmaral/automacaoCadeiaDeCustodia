@@ -35,6 +35,9 @@ describe('Consulta e visualização de vestígios com usuário não DPT', () => 
     it('CT010 - Visualizar vestígio NÃO DPT após consulta', () => {
         cy.consultaVisualizaVestigioPadrao()
     });
+    it('CT011 - Permissão para visualizar vestígio não pertencente à unidade do usuário', () => {
+        cy.permissaoVisualizarVestigio()
+    });
 });
 describe('Consulta e visualização de vestígios com usuário DPT', () => {
     it('CT012 - Visualizar vestígio DPT após consulta', () => {

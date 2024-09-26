@@ -200,6 +200,21 @@ Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
 })
 })
 
+Cypress.Commands.add('permissaoVisualizarVestigio', () => {
+    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
+    cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
+    cy.get(selectors.moduloConsultaDeVestígios).click()
+    cy.get(selectors.tituloConsultaVestigios, {timeout: 15000}).should('have.text', 'Cadeia de Custódia > Consulta de Vestígios')
+    cy.get(selectors.codigoRastreamentoConsulta).type(Cypress.env("codigoVestigioDPT2"))
+    cy.get(selectors.botaoPesquisarConsulta).click()
+    cy.wait('@requestPesquisa', {timeout: 15000}).then((interception) => {
+        expect(interception.response.statusCode).to.eq(200);
+    cy.contains(Cypress.env("codigoVestigioDPT2"))
+    cy.get(selectors.botaoVisualizarVestigio).should('not.exist')
+})
+})
+
 Cypress.Commands.add('loginComoDPT', () => {
     cy.get(selectors.campoUsuarioLogin).type(Cypress.env('usuarioDPT'))
     cy.get(selectors.campoSenhaLogin).type(Cypress.env('senhaDPT'))

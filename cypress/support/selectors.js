@@ -99,7 +99,30 @@ checkboxCriminalNaturezaExameRegistro: 'input[type="radio"][value="Criminal"]',
 campoTipoProcedRelacionadoRegistro: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div[5]/div[2]/div/div/div/section/div/div[1]/div/div',
 listaDropDownProcedRelacionadoRegistro: '/html/body/div[2]/div[3]/ul',
 numeroProcedRelacionadoRegistro: '#numProced',
-unidadeProcedRelacionadoRegistro: '/html/body/div[1]/div[3]/div/div/div[2]/div[2]/div[2]/div/div[5]/div[2]/div/div/div/section/div/div[2]/div[2]/div/div/input'
+unidadeProcedRelacionadoRegistro: '/html/body/div[1]/div[3]/div/div/div[2]/div[2]/div[2]/div/div[5]/div[2]/div/div/div/section/div/div[2]/div[2]/div/div/input',
+autoridadeProcedRelacionadoRegistro: 'input[name="autoridadeProcedimento"]',
+naoDesejaRegistrarOutroVestigio: '/html/body/div[2]/div[3]/div/div[2]/button[2]',
+botaoMeusVestigios: '/html/body/div/div[3]/div/div/div[2]/div[2]/button',
+botaoLiberarVestigio: '[aria-label="Liberar"]',
+simLiberarVestigio: '/html/body/div[2]/div[3]/div/div/div/div[2]/button',
+checkboxDocNaoApresentado: 'input[name="apresentado_apresentou"]',
+campoNomeApresentante: '#nome_apresentante',
+campoEnderecoApresentante: 'input[name="apresentado_endereco"]',
+campoLocalColetaEntregaTerceiros: '#local_coleta',
+campoLocalEntrega: 'input[name="local_entrega"]',
+observacoesColetaEntregaPorTerceiros: '#observacoes',
+checkboxNaoAmbienteIsolado: 'input[name="isolamento"][value="NÃO"]',
+checkboxSimAmbienteIsolado: 'input[name="isolamento"][value="SIM"]',
+justificativaNaoIsolamento: '#justificativa',
+checkboxSimAmbientePreservado: 'input[name="preservacao"][value="SIM"]',
+checkboxNaoAmbientePreservado: 'input[name="preservacao"][value="NÃO"]',
+secaoResponsavelPreservacaoLocal: '.css-duoaty',
+justificativaNaoPreservacao: '#justificativaPreserva',
+obsPreservacaoLocal: '#obs_preserva',
+matriculaResponsavelColetaRegistroDPT: '#matriculaColeta',
+// nomeResponsavelColetaRegistroDPT: 
+// cargoResponsavelColetaRegistroDPT:
+// unidadeResponsavelColetaRegistroDPT:
 
 
 

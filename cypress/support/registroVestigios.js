@@ -19,55 +19,63 @@ Cypress.Commands.add('origensDaColetaDisponiveis', () => {
           'Diligência Policial'
         ].map(option => option.trim()) 
         expect(actualOptions).to.have.members(expectedOptions)
-      })
+})
 })
 
 
 Cypress.Commands.add ('registraVestigioNaoDPT', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
-    cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
-    cy.wait(1000)
-    cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()
-    cy.xpath(selectors.dropDownOrigemColeta).click()
-    cy.xpath(selectors.listaDropDownOrigemColeta).contains('Local de Crime').click();
-    cy.get(selectors.campoLocalizacaoRegistroVestigio).type('Valeria')
-    cy.contains('button', 'Próximo').click()
-    cy.wait('@requestProximoRegistro', {timeout: 15000}).then((interception) => {
-        expect(interception.response.statusCode).to.equal(200);
-    cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '92107851            ')
-    cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
-    cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
-    cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
-    cy.get(selectors.checkboxImediatoRegistro).check();
-    cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
-    const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
-    cy.get(selectors.numeroVestigioVisualizacao).type(numeroAleatorio.toString())
-    cy.get(selectors.numeroLacreVisualizacao).type(numeroAleatorio.toString())
-    cy.xpath(selectors.botaoAdicionarVestigioRegistro).click()
-    cy.xpath(selectors.dropDownTipoVestigioRegistro).should('be.visible').click()
-    cy.wait(1000)
-    cy.xpath(selectors.listaDropDownTipoVestigioRegistro).should('be.visible').contains('Explosivo').click()
-    cy.xpath(selectors.botaoSalvarTipoVestigioRegistro).click()
-    cy.xpath(selectors.botaoAdicionarVestigioRegistro).should('contain.text', 'Explosivo')
-    cy.get(selectors.campoDescricaoVestigioRegistro).type('Vestígio criado pela automação')
-    cy.get(selectors.checkboxCriminalNaturezaExameRegistro).check()
-    cy.contains('button', 'Próximo').click()
-    cy.xpath(selectors.campoTipoProcedRelacionadoRegistro).click()
-    cy.xpath(selectors.listaDropDownProcedRelacionadoRegistro).should('be.visible').contains('Boletim de Ocorrência').click()
-    cy.get(selectors.numeroProcedRelacionadoRegistro).type(numeroAleatorio.toString())
-    cy.xpath(selectors.unidadeProcedRelacionadoRegistro).type('unidade teste')
-    cy.get(selectors.autoridadeProcedRelacionadoRegistro).type('teste')
-    cy.contains('button', 'Concluir').click()
-    cy.contains('Deseja registrar outro vestígio?')
-    cy.xpath(selectors.naoDesejaRegistrarOutroVestigio).click()
-    cy.get(selectors.moduloConsultaDeVestígios, {timeout:15000}).should('be.visible').click()
-    cy.xpath(selectors.botaoMeusVestigios, {timeout:15000}).should('be.visible').click()
-    cy.contains('Tipo de vestígio: Explosivo')
-    cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
-    cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
-    cy.contains('Vestígio encerrado com sucesso.')
-    })
-  })
+  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
+  cy.wait(1000)
+  cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()
+  cy.xpath(selectors.dropDownOrigemColeta).click()
+  cy.xpath(selectors.listaDropDownOrigemColeta).contains('Local de Crime').click();
+  cy.get(selectors.campoLocalizacaoRegistroVestigio).type('Valeria')
+  cy.contains('button', 'Próximo').click()
+  cy.wait('@requestProximoRegistro', {timeout: 15000}).then((interception) => {
+      expect(interception.response.statusCode).to.equal(200);
+  cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '92107851            ')
+  cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
+  cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
+  cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
+  cy.get(selectors.checkboxImediatoRegistro).check();
+  cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
+  const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
+  cy.get(selectors.numeroVestigioVisualizacao).type(numeroAleatorio.toString())
+  cy.get(selectors.numeroLacreVisualizacao).type(numeroAleatorio.toString())
+  cy.xpath(selectors.botaoAdicionarVestigioRegistro).click()
+  cy.xpath(selectors.dropDownTipoVestigioRegistro).should('be.visible').click()
+  cy.wait(1000)
+  cy.xpath(selectors.listaDropDownTipoVestigioRegistro).should('be.visible').contains('Explosivo').click()
+  cy.xpath(selectors.botaoSalvarTipoVestigioRegistro).click()
+  cy.xpath(selectors.botaoAdicionarVestigioRegistro).should('contain.text', 'Explosivo')
+  cy.get(selectors.campoDescricaoVestigioRegistro).type('Vestígio criado pela automação')
+  cy.get(selectors.checkboxCriminalNaturezaExameRegistro).check()
+  cy.contains('button', 'Próximo').click()
+  cy.xpath(selectors.campoTipoProcedRelacionadoRegistro).click()
+  cy.xpath(selectors.listaDropDownProcedRelacionadoRegistro).should('be.visible').contains('Boletim de Ocorrência').click()
+  cy.get(selectors.numeroProcedRelacionadoRegistro).type(numeroAleatorio.toString())
+  cy.xpath(selectors.unidadeProcedRelacionadoRegistro).type('unidade teste')
+  cy.get(selectors.autoridadeProcedRelacionadoRegistro).type('teste')
+  cy.contains('button', 'Concluir').click()
+  cy.contains('Deseja registrar outro vestígio?')
+  cy.xpath(selectors.naoDesejaRegistrarOutroVestigio).click()
+  cy.get(selectors.moduloConsultaDeVestígios, {timeout:15000}).should('be.visible').click()
+  cy.xpath(selectors.botaoMeusVestigios, {timeout:15000}).should('be.visible').click()
+  cy.contains('Tipo de vestígio: Explosivo')
+  const trackingCode = 'Explosivo';
+  cy.contains(trackingCode)
+    .parents(selectors.cardsVestigiosEdicao)
+    .find(selectors.botaoLiberacaoVestigio) 
+    .click();
+  cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
+  cy.contains('Vestígio encerrado com sucesso.')
+
+//cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
+//cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
+//cy.contains('Vestígio encerrado com sucesso.')
+})
+})
 
 Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
   cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
@@ -104,9 +112,17 @@ Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
   cy.get(selectors.moduloConsultaDeVestígios, {timeout:15000}).should('be.visible').click()
   cy.xpath(selectors.botaoMeusVestigios, {timeout:15000}).should('be.visible').click()
   cy.contains('Tipo de vestígio: Explosivo')
-  cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
+  const trackingCode = 'Explosivo';
+  cy.contains(trackingCode)
+    .parents(selectors.cardsVestigiosEdicao)
+    .find(selectors.botaoLiberacaoVestigio) 
+    .click();
   cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
   cy.contains('Vestígio encerrado com sucesso.')
+
+//cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
+//cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
+//cy.contains('Vestígio encerrado com sucesso.')
 })
 })
 
@@ -129,52 +145,94 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
   cy.get(selectors.localizacaoVisualizacaoVestigio).type('Valéria')
   cy.contains('button', 'Próximo').click()
   cy.wait('@requestProximo', {timeout: 15000}).then((interception) => {
-    expect(interception.response.statusCode).to.equal(200);
-  // parei a partir daqui, apenas atualizar os seletores dos trechos abaixo para continuar registro de vestigio do DPT
+  expect(interception.response.statusCode).to.equal(200);
   cy.get(selectors.matriculaResponsavelColetaRegistroDPT).should('have.value', '55566677            ')
   cy.get(selectors.nomeResponsavelColetaRegistroDPT).should('have.value', 'USUÁRIO PARA AUTOMAÇÃO')
   cy.get(selectors.cargoResponsavelColetaRegistroDPT).should('have.value', 'Funcionário Civil')
   cy.get(selectors.unidadeResponsavelColetaRegistroDPT).should('have.value', 'CRPT  Barreiras')
-
-
-
-
-
-  // cy.get(selectors.campoLocalizacaoRegistroVestigio).type('Valeria')
-  // cy.contains('button', 'Próximo').click()
-  // cy.wait('@requestProximoRegistro', {timeout: 15000}).then((interception) => {
-  //     expect(interception.response.statusCode).to.equal(200);
-  // cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '92107851            ')
-  // cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
-  // cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
-  // cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
-  // cy.get(selectors.checkboxImediatoRegistro).check();
-  // cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
-  // const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
-  // cy.get(selectors.numeroVestigioVisualizacao).type(numeroAleatorio.toString())
-  // cy.get(selectors.numeroLacreVisualizacao).type(numeroAleatorio.toString())
-  // cy.xpath(selectors.botaoAdicionarVestigioRegistro).click()
-  // cy.xpath(selectors.dropDownTipoVestigioRegistro).should('be.visible').click()
-  // cy.wait(1000)
-  // cy.xpath(selectors.listaDropDownTipoVestigioRegistro).should('be.visible').contains('Explosivo').click()
-  // cy.xpath(selectors.botaoSalvarTipoVestigioRegistro).click()
-  // cy.xpath(selectors.botaoAdicionarVestigioRegistro).should('contain.text', 'Explosivo')
-  // cy.get(selectors.campoDescricaoVestigioRegistro).type('Vestígio criado pela automação')
-  // cy.get(selectors.checkboxCriminalNaturezaExameRegistro).check()
-  // cy.contains('button', 'Próximo').click()
-  // cy.xpath(selectors.campoTipoProcedRelacionadoRegistro).click()
-  // cy.xpath(selectors.listaDropDownProcedRelacionadoRegistro).should('be.visible').contains('Boletim de Ocorrência').click()
-  // cy.get(selectors.numeroProcedRelacionadoRegistro).type(numeroAleatorio.toString())
-  // cy.xpath(selectors.unidadeProcedRelacionadoRegistro).type('unidade teste')
-  // cy.get(selectors.autoridadeProcedRelacionadoRegistro).type('teste')
-  // cy.contains('button', 'Concluir').click()
-  // cy.contains('Deseja registrar outro vestígio?')
-  // cy.xpath(selectors.naoDesejaRegistrarOutroVestigio).click()
-  // cy.get(selectors.moduloConsultaDeVestígios, {timeout:15000}).should('be.visible').click()
-  // cy.xpath(selectors.botaoMeusVestigios, {timeout:15000}).should('be.visible').click()
-  // cy.contains('Tipo de vestígio: Explosivo')
-  // cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
-  // cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
-  // cy.contains('Vestígio encerrado com sucesso.')
+  const radioButtons = [
+    'input[type="radio"][value="Imediato"]',
+    'input[type="radio"][value="Mediato"]',
+    'input[type="radio"][value="Relacionado"]'
+  ];
+  const randomIndex = Math.floor(Math.random() * radioButtons.length);
+  cy.get(radioButtons[randomIndex]).check();
+  cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado para automação')
+  const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
+  cy.get(selectors.numeroVestigioVisualizacao).type(numeroAleatorio.toString())
+  cy.get(selectors.numeroLacreVisualizacao).type(numeroAleatorio.toString())
+  cy.xpath(selectors.botaoAdicionarVestigioRegistro).click()
+  cy.xpath(selectors.dropDownTipoVestigioRegistro).should('be.visible').click()
+  cy.wait(1000)
+  cy.xpath(selectors.listaDropDownTipoVestigioRegistro).should('be.visible').contains('Explosivo').click()
+  cy.xpath(selectors.botaoSalvarTipoVestigioRegistro).click()
+  cy.xpath(selectors.botaoAdicionarVestigioRegistro).should('contain.text', 'Explosivo')
+  cy.get(selectors.campoDescricaoVestigioRegistro).type('Vestígio criado pela automação')
+  cy.get(selectors.checkboxCriminalNaturezaExameRegistro).check()
+  cy.contains('button', 'Próximo').click()
+  cy.wait('@requestProximo', {timeout: 15000}).then((interception) => {
+    expect(interception.response.statusCode).to.equal(200);
   })
+  cy.xpath(selectors.campoTipoProcedRelacionadoRegistro).click()
+  cy.xpath(selectors.listaDropDownProcedRelacionadoRegistro).should('be.visible').contains('Boletim de Ocorrência').click()
+  cy.get(selectors.numeroProcedRelacionadoRegistro).type(numeroAleatorio.toString())
+  cy.xpath(selectors.unidadeProcedRelacionadoRegistro).type('unidade teste')
+  cy.get(selectors.autoridadeProcedRelacionadoRegistro).type('teste')
+  cy.contains('button', 'Concluir').click()
+  cy.contains('Deseja registrar outro vestígio?')
+  cy.xpath(selectors.naoDesejaRegistrarOutroVestigio).click()
+  cy.get(selectors.moduloConsultaDeVestígios, {timeout:15000}).should('be.visible').click()
+  cy.xpath(selectors.botaoMeusVestigios, {timeout:15000}).should('be.visible').click()
+  cy.contains('Tipo de vestígio: Explosivo', {timeout:15000})
+  const trackingCode = 'Explosivo';
+  cy.contains(trackingCode)
+    .parents(selectors.cardsVestigiosEdicao)
+    .find(selectors.botaoLiberacaoVestigio) 
+    .click();
+  cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
+  cy.contains('Vestígio encerrado com sucesso.')
+
+//cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
+//cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
+//cy.contains('Vestígio encerrado com sucesso.')
+})
+})
+
+Cypress.Commands.add ('salvarRascunhoVestígio', () => {
+  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
+  cy.wait(1000)
+  cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()
+  cy.xpath(selectors.dropDownOrigemColeta).click()
+  cy.xpath(selectors.listaDropDownOrigemColeta).contains('Local de Crime').click();
+  cy.get(selectors.campoLocalizacaoRegistroVestigio).type('Valeria')
+  cy.contains('button', 'Próximo').click()
+  cy.wait('@requestProximoRegistro', {timeout: 15000}).then((interception) => {
+  expect(interception.response.statusCode).to.equal(200);
+  cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '92107851            ')
+  cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
+  cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
+  cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
+  cy.get(selectors.checkboxImediatoRegistro).check();
+  cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
+  const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
+  cy.get(selectors.numeroVestigioVisualizacao).type(numeroAleatorio.toString())
+  cy.get(selectors.numeroLacreVisualizacao).type(numeroAleatorio.toString())
+  cy.get(selectors.botaoSalvarRascunho).click()
+  cy.get(selectors.modalRascunhoSalvoSucesso, {timeout: 15000}).should('have.text', 'Rascunho salvo com sucesso!')
+  cy.xpath(selectors.okModalRascunhoSalvo).click()
+  cy.xpath(selectors.codigoRastreamentoRegistroVestigio).invoke('text').as('valorGuardado');
+  cy.xpath(selectors.botaoMeusRascunhosRegistro).click()
+  cy.get('@valorGuardado').then((valor) => {
+  cy.contains(valor.trim());
+  cy.contains(valor).click()
+  cy.get(selectors.localizacaoVisualizacaoVestigio).should('have.value', 'Valeria')
+  cy.get(selectors.botaoCancelarRascunho).click()
+  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spCarregaMenuPrincipalreact&DataJson=.*/).as('requestMenuPrincipal');
+  cy.xpath(selectors.simModalCancelarVestigio).click()
+  cy.wait('@requestMenuPrincipal', {timeout: 15000}).then((interception) => {
+  expect(interception.response.statusCode).to.equal(200);
+});
+}) 
+})
 })

@@ -226,78 +226,77 @@ Cypress.Commands.add('loginComoDPT', () => {
 Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
-        cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
+    cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
-        cy.get(selectors.tituloConsultaVestigios, {timeout: 15000}).should('have.text', 'Cadeia de Custódia > Consulta de Vestígios')
-        cy.get(selectors.codigoRastreamentoConsulta).type(Cypress.env("codigoVestigioDPT2"))
-        cy.get(selectors.botaoPesquisarConsulta).click()
-        cy.wait('@requestPesquisa', {timeout: 15000}).then((interception) => {
-            expect(interception.response.statusCode).to.eq(200);
-        cy.contains(Cypress.env("codigoVestigioDPT2"))
-        cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact2&DataJson=.*/).as('requestVisualizacao');
-        cy.get(selectors.botaoVisualizarVestigio).click()
-        cy.wait('@requestVisualizacao', {timeout: 15000}).then((interception) => {
-            expect(interception.response.statusCode).to.equal(200);
-          });
-        cy.contains('Dados do Local do Crime')
-        // cy.contains('Condição do Local')
-        // cy.xpath(selectors.checkboxSimAmbienteIsoladoVisualizacao).should('be.checked')
-        // cy.xpath(selectors.checkboxNaoAmbienteIsoladoVisualizacao).should('not.be.checked')
-        // cy.xpath(selectors.checkboxSimAmbientePreservadoVisualizacao).should('be.checked')
-        // cy.xpath(selectors.checkboxNaoAmbientePreservadoVisualizacao).should('not.be.checked')
-        cy.get(selectors.localizacaoVisualizacaoVestigio).should('have.value', 'Itapuã')
-        cy.contains('Responsável pela Preservação do Local')
-        cy.get(selectors.matriculaResponsavelPreservacaoVisualizacao).should('have.value', '92107851')
-        cy.get(selectors.nomeResponsavelPreservacaoVisualizacao).should('have.value', 'Igor Teste')
-        cy.get(selectors.cargoResponsavelPreservacaoVisualizacao).should('contain.text', 'Funcionário Civil')
-        cy.get(selectors.unidadeResponsavelPreservacaoVisualizacao).should('have.value', '10ª DT - Pau da Lima')
-        cy.get(selectors.dataChegadaResponsavelPreservacaoVisualizacao).should('have.value', '12/09/2024')
-        cy.get(selectors.horaChegadaResponsavelPreservacaoVisualizacao).should('have.value', '15:02')
-        cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximo');
-        cy.get(selectors.botaoProximoVisualizacao1).click()
-        cy.wait('@requestProximo', {timeout: 15000}).then((interception) => {
-        expect(interception.response.statusCode).to.equal(200);
-        cy.contains('Coleta e Acondicionamento do Vestígio')
-        cy.contains('Responsável pela Coleta e Acondicionamento')
-        cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '55566677')
-        cy.get(selectors.nomeResponsavelColetaVisualizacao).should('have.value', 'USUÁRIO PARA AUTOMAÇÃO')
-        cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
-        cy.get(selectors.unidadeResponsavelColetaVisualizacao).should('have.value', 'CRPT  Barreiras')
-        cy.contains('Posição do Vestígio no Local do Crime')
-        cy.xpath(selectors.checkboxImediatoPosicaoVestigioVisualizacao).should('be.checked')
-        cy.xpath(selectors.checkboxMediatoPosicaoVestigioVisualizacao).should('not.be.checked')
-        cy.xpath(selectors.checkboxRelacionadoPosicaoVestigioVisualizacao).should('not.be.checked')
-        cy.get(selectors.descPosicaoVestigioVisualizacao).should('have.value', 'Vestígio para automação de testes')
-        cy.get(selectors.numeroVestigioVisualizacao).should('have.value', '557789')
-        cy.get(selectors.numeroLacreVisualizacao).should('have.value', '455554')
-        cy.get(selectors.dataColetaPosicaoVestigioVisualizacao).should('have.value', '12/09/2024')
-        cy.get(selectors.horaColetaPosicaoVestigioVisualizacao).should('have.value', '16:15')
-        cy.get(selectors.campoVestigiosVisualizacao).should('contain.text', 'Explosivo')
-        cy.get(selectors.olhoCampoVestigiosVisualizacao).click()
-        cy.xpath(selectors.checkboxQntdAproximadaVisualizacao, {timeout: 15000}).should('not.be.checked')
-        cy.xpath(selectors.tipoDeVestigioModalVisualizacao).should('contain.text', 'Explosivo')
-        cy.xpath(selectors.subTipoVestigioModalVisualizacao).should('contain.text', 'Explosivo')
-        cy.xpath(selectors.qntdTipoVestigioModalVisualizacao).should('contain.value', '1')
-        cy.xpath(selectors.unidadeMedidaTipoVestigioModalVisualizacao).should('contain.text', 'UNIDADE')
-        cy.xpath(selectors.fechaModalTipoVestigioVisualizacao).click()
-        cy.get(selectors.descricaoVestigioVisualizacao).should('contain.text', 'Vestígio para automação de testes')
-        cy.contains('Natureza do Exame')
-        cy.xpath(selectors.checkboxSimNaturezaExameVisualizacao).should('be.checked')
-        cy.xpath(selectors.checkboxNaoNaturezaExameVisualizacao).should('not.be.checked')
-        cy.intercept('POST', '**/api/ServiceMopIonic/api/ExecutarPostGeral').as('proximaPagina')
-        cy.get(selectors.botaoProximoVisualizacao2).click()
-        cy.wait('@proximaPagina', {timeout: 15000}).then((interception) => {
-            expect(interception.response.statusCode).to.equal(200);
-        cy.contains('Informações Polícia Judiciária/Corregedoria')
-        cy.contains('Procedimentos Relacionados')
-        cy.get(selectors.tipoProcedimentoRelacionadoVisualizacao).should('contain.text', 'Boletim de Ocorrência')
-        cy.get(selectors.numeroProcedimentoRelacionadoVisualizacao).should('contain.text', '445544')
-        cy.get(selectors.unidadeProcedimentoRelacionadoVisualizacao).should('contain.text', 'unidade teste')
-        cy.get(selectors.autoridadeProcedimentoRelacionadoVisualizacao).should('contain.text', 'teste')
-        cy.xpath(selectors.botaoExcluirProcedimentoRelacionadoVisualizacao).should('be.disabled')
-            })
-        });
-    })
+    cy.get(selectors.tituloConsultaVestigios, {timeout: 15000}).should('have.text', 'Cadeia de Custódia > Consulta de Vestígios')
+    cy.get(selectors.codigoRastreamentoConsulta).type(Cypress.env("codigoVestigioDPT2"))
+    cy.get(selectors.botaoPesquisarConsulta).click()
+    cy.wait('@requestPesquisa', {timeout: 15000}).then((interception) => {
+    expect(interception.response.statusCode).to.eq(200);
+    cy.contains(Cypress.env("codigoVestigioDPT2"))
+    cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact2&DataJson=.*/).as('requestVisualizacao');
+    cy.get(selectors.botaoVisualizarVestigio).click()
+    cy.wait('@requestVisualizacao', {timeout: 15000}).then((interception) => {
+    expect(interception.response.statusCode).to.equal(200);
+    });
+    cy.contains('Dados do Local do Crime')
+    cy.get(selectors.localizacaoVisualizacaoVestigio).should('have.value', 'Itapuã')
+    cy.contains('Responsável pela Preservação do Local')
+    cy.get(selectors.matriculaResponsavelPreservacaoVisualizacao).should('have.value', '92107851')
+    cy.get(selectors.nomeResponsavelPreservacaoVisualizacao).should('have.value', 'Igor Teste')
+    cy.get(selectors.cargoResponsavelPreservacaoVisualizacao).should('contain.text', 'Funcionário Civil')
+    cy.get(selectors.unidadeResponsavelPreservacaoVisualizacao).should('have.value', '10ª DT - Pau da Lima')
+    cy.get(selectors.dataChegadaResponsavelPreservacaoVisualizacao).should('have.value', '12/09/2024')
+    cy.get(selectors.horaChegadaResponsavelPreservacaoVisualizacao).should('have.value', '15:02')
+    cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximo');
+    cy.get(selectors.botaoProximoVisualizacao1).click()
+    cy.wait('@requestProximo', {timeout: 15000}).then((interception) => {
+    expect(interception.response.statusCode).to.equal(200);
+    cy.contains('Coleta e Acondicionamento do Vestígio')
+    cy.contains('Responsável pela Coleta e Acondicionamento')
+    cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '55566677')
+    cy.get(selectors.nomeResponsavelColetaVisualizacao).should('have.value', 'USUÁRIO PARA AUTOMAÇÃO')
+    cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
+    cy.get(selectors.unidadeResponsavelColetaVisualizacao).should('have.value', 'CRPT  Barreiras')
+    cy.contains('Posição do Vestígio no Local do Crime')
+    cy.xpath(selectors.checkboxImediatoPosicaoVestigioVisualizacao).should('be.checked')
+    cy.xpath(selectors.checkboxMediatoPosicaoVestigioVisualizacao).should('not.be.checked')
+    cy.xpath(selectors.checkboxRelacionadoPosicaoVestigioVisualizacao).should('not.be.checked')
+    cy.get(selectors.descPosicaoVestigioVisualizacao).should('have.value', 'Vestígio para automação de testes')
+    cy.get(selectors.numeroVestigioVisualizacao).should('have.value', '557789')
+    cy.get(selectors.numeroLacreVisualizacao).should('have.value', '455554')
+    cy.get(selectors.dataColetaPosicaoVestigioVisualizacao).should('have.value', '12/09/2024')
+    cy.get(selectors.horaColetaPosicaoVestigioVisualizacao).should('have.value', '16:15')
+    cy.get(selectors.campoVestigiosVisualizacao).should('contain.text', 'Explosivo')
+    cy.get(selectors.olhoCampoVestigiosVisualizacao).click()
+    cy.xpath(selectors.checkboxQntdAproximadaVisualizacao, {timeout: 15000}).should('not.be.checked')
+    cy.xpath(selectors.tipoDeVestigioModalVisualizacao).should('contain.text', 'Explosivo')
+    cy.xpath(selectors.subTipoVestigioModalVisualizacao).should('contain.text', 'Explosivo')
+    cy.xpath(selectors.qntdTipoVestigioModalVisualizacao).should('contain.value', '1')
+    cy.xpath(selectors.unidadeMedidaTipoVestigioModalVisualizacao).should('contain.text', 'UNIDADE')
+    cy.xpath(selectors.fechaModalTipoVestigioVisualizacao).click()
+    cy.get(selectors.descricaoVestigioVisualizacao).should('contain.text', 'Vestígio para automação de testes')
+    cy.contains('Natureza do Exame')
+    cy.xpath(selectors.checkboxSimNaturezaExameVisualizacao).should('be.checked')
+    cy.xpath(selectors.checkboxNaoNaturezaExameVisualizacao).should('not.be.checked')
+    cy.intercept('POST', '**/api/ServiceMopIonic/api/ExecutarPostGeral').as('proximaPagina')
+    cy.get(selectors.botaoProximoVisualizacao2).click()
+    cy.wait('@proximaPagina', {timeout: 15000}).then((interception) => {
+    expect(interception.response.statusCode).to.equal(200);
+    cy.contains('Informações Polícia Judiciária/Corregedoria')
+    cy.contains('Procedimentos Relacionados')
+    cy.get(selectors.tipoProcedimentoRelacionadoVisualizacao).should('contain.text', 'Boletim de Ocorrência')
+    cy.get(selectors.numeroProcedimentoRelacionadoVisualizacao).should('contain.text', '445544')
+    cy.get(selectors.unidadeProcedimentoRelacionadoVisualizacao).should('contain.text', 'unidade teste')
+    cy.get(selectors.autoridadeProcedimentoRelacionadoVisualizacao).should('contain.text', 'teste')
+    cy.xpath(selectors.botaoExcluirProcedimentoRelacionadoVisualizacao).should('be.disabled')
+})
+});
+})
+})
+
+Cypress.Commands.add ('salvarRascunhoVestígio', () => {
+    
 })
 
 

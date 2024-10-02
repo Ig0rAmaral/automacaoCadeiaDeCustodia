@@ -9,16 +9,19 @@ describe('Registro de vestígios com usuário NÃO DPT', () => {
     it('CT001 - Origens da coleta disponíveis ao registrar vestígio', () => {
         cy.origensDaColetaDisponiveis()
     });
-    it('CT002 - Registrar vestígio com sucesso', () => {
+    it('CT002 - Registrar e liberar vestígio NÃO DPT com sucesso', () => {
         cy.registraVestigioNaoDPT()
     });
-    it('CT003 - Registrar vestígio com origem da coleta "Entrega por terceiros"', () => {
+    it('CT003 - Registrar vestígio NÃO DPT com origem da coleta "Entrega por terceiros"', () => {
         cy.registraVestigioEntregaPorTerceiros()
+    });
+    it('CT004 - Salvar e cancelar rascunho de vestígio com sucesso"', () => {
+        cy.salvarRascunhoVestígio()
     });
 });
 
-describe.only('Registro de vestígios com usuário DPT', () => {
-    it('CT004 - Registrar vestígio com sucesso', () => {
+describe('Registro de vestígios com usuário DPT', () => {
+    it('CT005 - Registrar e liberar vestígio DPT com sucesso', () => {
         cy.visitaSite()
         cy.loginComoDPT()
         cy.registraVestigioDPT()

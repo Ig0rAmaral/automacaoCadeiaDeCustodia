@@ -120,11 +120,25 @@ secaoResponsavelPreservacaoLocal: '.css-duoaty',
 justificativaNaoPreservacao: '#justificativaPreserva',
 obsPreservacaoLocal: '#obs_preserva',
 matriculaResponsavelColetaRegistroDPT: '#matriculaColeta',
-// nomeResponsavelColetaRegistroDPT: 
-// cargoResponsavelColetaRegistroDPT:
-// unidadeResponsavelColetaRegistroDPT:
+nomeResponsavelColetaRegistroDPT: 'input[name="nomeColeta"]',
+cargoResponsavelColetaRegistroDPT: 'input[name="cargoColeta"]',
+unidadeResponsavelColetaRegistroDPT: 'input[name="unidadeColeta"]',
+botaoSalvarRascunho: 'button[aria-label="Salvar este vestígio como rascunho"]',
+modalRascunhoSalvoSucesso: '#dialogVestigio',
+okModalRascunhoSalvo: '/html/body/div[2]/div[3]/div/div[2]/button',
+codigoRastreamentoRegistroVestigio: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div[5]/div[1]/div[1]/h6[2]',
+botaoMeusRascunhosRegistro: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div[2]/button',
+botaoCancelarRascunho: 'button[aria-label="Cancelar o preenchimento"]',
+simModalCancelarVestigio: '/html/body/div[2]/div[3]/div/div[2]/button[1]',
 
-
+// Seletores da página de edição de vestígio
+cardsVestigiosEdicao: 'div[class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1k2lr4q"]',
+botaoEdicaoVestigio: 'button[aria-label="Editar"]',
+botaoLiberacaoVestigio: '[aria-label="Liberar"]',
+moduloEdicaoDeVestigios: '/html/body/div/div[3]/div/div/div[2]/div/div/div[2]/div[3]/div',
+tipoAditamentoEdicao: '/html/body/div[2]/div[3]/div/div/div/div[1]/button',
+botaoAdicionarVestigioEdicao: '.MuiGrid-grid-md-3 > .MuiPaper-root',
+campoTipoVestigioEdicao: '/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div/div'
 
 
 

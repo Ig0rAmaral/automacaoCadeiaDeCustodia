@@ -179,6 +179,7 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
   cy.xpath(selectors.unidadeProcedRelacionadoRegistro).type('unidade teste')
   cy.get(selectors.autoridadeProcedRelacionadoRegistro).type('teste')
   cy.contains('button', 'Concluir').click()
+  cy.wait(1000)
   cy.contains('Deseja registrar outro vestígio?')
   cy.xpath(selectors.naoDesejaRegistrarOutroVestigio).click()
   cy.get(selectors.moduloConsultaDeVestígios, {timeout:15000}).should('be.visible').click()
@@ -191,10 +192,6 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
     .click();
   cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
   cy.contains('Vestígio encerrado com sucesso.')
-
-//cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
-//cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
-//cy.contains('Vestígio encerrado com sucesso.')
 })
 })
 

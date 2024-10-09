@@ -138,7 +138,12 @@ botaoLiberacaoVestigio: '[aria-label="Liberar"]',
 moduloEdicaoDeVestigios: '/html/body/div/div[3]/div/div/div[2]/div/div/div[2]/div[3]/div',
 tipoAditamentoEdicao: '/html/body/div[2]/div[3]/div/div/div/div[1]/button',
 botaoAdicionarVestigioEdicao: '.MuiGrid-grid-md-3 > .MuiPaper-root',
-campoTipoVestigioEdicao: '/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div/div'
+campoTipoVestigioEdicao: '/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div/div',
+modalVestigioEditadoSucesso: '#dialogVestigio',
+okModalVestigioEditado: '.MuiDialogActions-root > .MuiButton-root',
+campoCodigoRastreamentoEdicao: 'input[name="rastreamento"]',
+cardVestgioEdicao: '/html/body/div/div[3]/div/div/div[2]/div/div[2]/div/div/section[3]/div[1]/div/div[1]/div',
+cardSituacaoVestigio: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div/button/div[4]'
 
 
 

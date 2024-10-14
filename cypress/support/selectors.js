@@ -143,7 +143,14 @@ modalVestigioEditadoSucesso: '#dialogVestigio',
 okModalVestigioEditado: '.MuiDialogActions-root > .MuiButton-root',
 campoCodigoRastreamentoEdicao: 'input[name="rastreamento"]',
 cardVestgioEdicao: '/html/body/div/div[3]/div/div/div[2]/div/div[2]/div/div/section[3]/div[1]/div/div[1]/div',
-cardSituacaoVestigio: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div/button/div[4]'
+cardSituacaoVestigio: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div/button/div[4]',
+
+// Seletores da página de liberação de vestígios
+
+moduloLiberacaoVestigios: '/html/body/div/div[3]/div/div/div[2]/div/div/div[2]/div[5]/div',
+campoLacreConsultaEdicao: 'input[name="lacre"]',
+iconeInfoLiberacaoVestigio: 'svg[data-testid="InfoIcon"]',
+botaoSimLiberarVestigio: '.MuiDialogActions-root > :nth-child(1)'
 
 
 

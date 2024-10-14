@@ -14,13 +14,13 @@ describe('Consulta e visualização de vestígios com usuário não DPT', () => 
     it('CT003 - Consultar vestígio pelo parâmetro "CÓDIGO RASTREAMENTO"', () => {
         cy.consultaVestigioCodigoRastreamento()
     });
-    it('CT004 - Consultar vestígio pelo parâmetro "NOME RESPONSÁVEL PRESERVAÇÃO"', () => {
+    it.only('CT004 - Consultar vestígio pelo parâmetro "NOME RESPONSÁVEL PRESERVAÇÃO"', () => {
         cy.consultaVestigioNomePreservacao()
     });
     it('CT005 - Consultar vestígio pelo parâmetro "MATRÍCULA RESPONSÁVEL PRESERVAÇÃO"', () => {
         cy.consultaVestigioMatriculaPreservacao()
     });
-    it('CT006 - Consultar vestígio pelo parâmetro "NOME RESPONSÁVEL COLETA" ', () => {
+    it('CT006 - Consultar vestígio pelo parâmetro "NOME RESPONSÁVEL COLETA"', () => {
         cy.consultaVestigioNomeColeta()
     });
     it('CT007 - Consultar vestígio pelo parâmetro "MATRÍCULA RESPONSÁVEL COLETA"', () => {

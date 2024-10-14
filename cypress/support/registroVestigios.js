@@ -33,7 +33,7 @@ Cypress.Commands.add ('registraVestigioNaoDPT', () => {
   cy.get(selectors.campoLocalizacaoRegistroVestigio).type('Valeria')
   cy.contains('button', 'Próximo').click()
   cy.wait('@requestProximoRegistro', {timeout: 15000}).then((interception) => {
-      expect(interception.response.statusCode).to.equal(200);
+    expect(interception.response.statusCode).to.equal(200);
   cy.get(selectors.matriculaResponsavelColetaVisualizacao).should('have.value', '92107851            ')
   cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
   cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
@@ -70,10 +70,6 @@ Cypress.Commands.add ('registraVestigioNaoDPT', () => {
     .click();
   cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
   cy.contains('Vestígio encerrado com sucesso.')
-
-//cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
-//cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
-//cy.contains('Vestígio encerrado com sucesso.')
 })
 })
 
@@ -119,10 +115,6 @@ Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
     .click();
   cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
   cy.contains('Vestígio encerrado com sucesso.')
-
-//cy.get(selectors.botaoLiberarVestigio, {timeout:15000}).should('be.visible').click()
-//cy.xpath(selectors.simLiberarVestigio, {timeout:15000}).should('be.visible').click()
-//cy.contains('Vestígio encerrado com sucesso.')
 })
 })
 

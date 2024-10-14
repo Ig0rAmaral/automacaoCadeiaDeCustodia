@@ -150,7 +150,14 @@ cardSituacaoVestigio: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/di
 moduloLiberacaoVestigios: '/html/body/div/div[3]/div/div/div[2]/div/div/div[2]/div[5]/div',
 campoLacreConsultaEdicao: 'input[name="lacre"]',
 iconeInfoLiberacaoVestigio: 'svg[data-testid="InfoIcon"]',
-botaoSimLiberarVestigio: '.MuiDialogActions-root > :nth-child(1)'
+botaoSimLiberarVestigio: '.MuiDialogActions-root > :nth-child(1)',
+dataInicialConsultaLiberacao: '/html/body/div/div[3]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]/div/div/div/input',
+dataFinalConsultaLiberacao: '/html/body/div/div[3]/div/div/div[2]/div[2]/div/div/div/div[1]/div[2]/div/div/div/input',
+codRastreamentoConsultaLiberacao: 'input[name="rastreamento"]',
+nomeRespPreservacaoConsultaLiberacao: 'input[name="nomePreservacao"]',
+matriculaRespPreservacaoConsultaLiberacao: 'input[name="matriculaPreservacao"]',
+nomeRespColetaConsultaLiberacao: 'input[name="nomeColeta"]',
+matriculaRespColetaConsultaLiberacao: 'input[name="matriculaColeta"]'
 
 
 

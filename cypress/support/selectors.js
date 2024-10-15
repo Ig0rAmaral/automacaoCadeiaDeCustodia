@@ -146,7 +146,6 @@ cardVestgioEdicao: '/html/body/div/div[3]/div/div/div[2]/div/div[2]/div/div/sect
 cardSituacaoVestigio: '/html/body/div/div[3]/div/div/div[2]/div[2]/div[2]/div/div/div[2]/div/button/div[4]',
 
 // Seletores da página de liberação de vestígios
-
 moduloLiberacaoVestigios: '/html/body/div/div[3]/div/div/div[2]/div/div/div[2]/div[5]/div',
 campoLacreConsultaEdicao: 'input[name="lacre"]',
 iconeInfoLiberacaoVestigio: 'svg[data-testid="InfoIcon"]',
@@ -157,7 +156,19 @@ codRastreamentoConsultaLiberacao: 'input[name="rastreamento"]',
 nomeRespPreservacaoConsultaLiberacao: 'input[name="nomePreservacao"]',
 matriculaRespPreservacaoConsultaLiberacao: 'input[name="matriculaPreservacao"]',
 nomeRespColetaConsultaLiberacao: 'input[name="nomeColeta"]',
-matriculaRespColetaConsultaLiberacao: 'input[name="matriculaColeta"]'
+matriculaRespColetaConsultaLiberacao: 'input[name="matriculaColeta"]',
+
+// Seletores da página de transferência de vestígios
+moduloTransferenciaVestigios: '/html/body/div/div[3]/div/div/div[2]/div/div/div[2]/div[4]/div',
+botaoTransferirDetalhesVestigio: '/html/body/div[2]/div[3]/div/div/div[1]/div/div/div/button[2]',
+campoInserirUnidadeTransferencia: '/html/body/div[2]/div[3]/div/div/div[3]/div/div[2]/div/div/div/input',
+botaoTransferirVestigioFinal: '/html/body/div[2]/div[3]/div/div/div[3]/div/div[3]/button',
+botaoReceberOpcoes: '/html/body/div/div[3]/div/div/div[2]/div[4]/div/table/tbody/tr[1]/td[4]/button',
+botaoReceberDetalhesVestigio: '/html/body/div[2]/div[3]/div/div/div[1]/div/div/div/button[2]',
+checkboxSimViolacaoRecebimento: '/html/body/div[2]/div[3]/div/div/div[3]/div/div[3]/div/div/div/label[1]/span[1]/input',
+checkboxNaoViolacaoRecebimento: '/html/body/div[2]/div[3]/div/div/div[3]/div/div[3]/div/div/div/label[2]/span[1]/input',
+campoDescrevaProblemasRecebimento: 'textarea[name="problemas"]',
+botaoReceberVestigioFinal: '/html/body/div[2]/div[3]/div/div/div[3]/div/div[4]/button'
 
 
 

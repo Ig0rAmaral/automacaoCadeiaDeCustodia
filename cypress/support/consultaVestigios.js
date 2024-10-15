@@ -295,9 +295,5 @@ Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
 })
 })
 
-Cypress.Commands.add ('salvarRascunhoVestígio', () => {
-    
-})
-
 
 

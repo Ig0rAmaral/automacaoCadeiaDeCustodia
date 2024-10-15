@@ -4,6 +4,7 @@ import './login'
 import './registroVestigios'
 import './edicaoVestigios'
 import './liberacaoVestigios'
+import './transferenciaVestigios'
 import 'cypress-iframe'
 import { faker } from '@faker-js/faker';
 require('@cypress/xpath');

@@ -17,6 +17,7 @@ Cypress.Commands.add ('registrarVestigioParaLiberacao', () => {
   cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
   cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
   cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
+  cy.contains('button', 'Ok').click()
   cy.get(selectors.checkboxImediatoRegistro).check();
   cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
   const numeroAleatorio = Math.floor(10000 + Math.random() * 90000)

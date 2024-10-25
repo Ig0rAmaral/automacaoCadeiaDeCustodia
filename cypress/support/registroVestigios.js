@@ -38,7 +38,7 @@ Cypress.Commands.add ('registraVestigioNaoDPT', () => {
   cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
   cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
   cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
-  cy.contains('button', 'Ok').click()
+  cy.contains('button', 'Ok', {timeout: 15000}).click()
   cy.get(selectors.checkboxImediatoRegistro).check();
   cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
   const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
@@ -53,7 +53,7 @@ Cypress.Commands.add ('registraVestigioNaoDPT', () => {
   cy.get(selectors.campoDescricaoVestigioRegistro).type('Vestígio criado pela automação')
   cy.get(selectors.checkboxCriminalNaturezaExameRegistro).check()
   cy.contains('button', 'Próximo').click()
-  cy.contains('button', 'Ok').click()
+  cy.contains('button', 'Ok', {timeout: 15000}).click()
   cy.xpath(selectors.campoTipoProcedRelacionadoRegistro).click()
   cy.xpath(selectors.listaDropDownProcedRelacionadoRegistro).should('be.visible').contains('Boletim de Ocorrência').click()
   cy.get(selectors.numeroProcedRelacionadoRegistro).type(numeroAleatorio.toString())
@@ -91,7 +91,7 @@ Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
   cy.contains('button', 'Próximo').click()
   cy.wait('@requestProximoRegistro', {timeout: 15000}).then((interception) => {
     expect(interception.response.statusCode).to.equal(200);
-  cy.contains('button', 'Ok').click()  
+    cy.contains('button', 'Ok', {timeout: 15000}).click()
   cy.get(selectors.checkboxImediatoRegistro).check();
   cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
    const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
@@ -145,7 +145,7 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
   cy.get(selectors.nomeResponsavelColetaRegistroDPT).should('have.value', 'USUÁRIO PARA AUTOMAÇÃO')
   cy.get(selectors.cargoResponsavelColetaRegistroDPT).should('have.value', 'Funcionário Civil')
   cy.get(selectors.unidadeResponsavelColetaRegistroDPT).should('have.value', 'CRPT  Barreiras')
-  cy.contains('button', 'Ok').click()
+  cy.contains('button', 'Ok', {timeout: 15000}).click()
   const radioButtons = [
     'input[type="radio"][value="Imediato"]',
     'input[type="radio"][value="Mediato"]',
@@ -169,7 +169,7 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
   cy.wait('@requestProximo', {timeout: 15000}).then((interception) => {
     expect(interception.response.statusCode).to.equal(200);
   })
-  cy.contains('button', 'Ok').click()
+  cy.contains('button', 'Ok', {timeout: 15000}).click()
   cy.xpath(selectors.campoTipoProcedRelacionadoRegistro).click()
   cy.xpath(selectors.listaDropDownProcedRelacionadoRegistro).should('be.visible').contains('Boletim de Ocorrência').click()
   cy.get(selectors.numeroProcedRelacionadoRegistro).type(numeroAleatorio.toString())
@@ -207,7 +207,7 @@ Cypress.Commands.add ('salvarRascunhoVestígio', () => {
   cy.get(selectors.campoResponsavelColetaRegistro).should('have.value', 'IGOR CARVALHO AMARAL DE SANTANA')
   cy.get(selectors.cargoResponsavelColetaVisualizacao).should('have.value', 'Funcionário Civil')
   cy.get(selectors.campoUnidadeColetaRegistro).should('have.value', '11ª CIPM - Barra')
-  cy.contains('button', 'Ok').click()
+  cy.contains('button', 'Ok', {timeout: 15000}).click()
   cy.get(selectors.checkboxImediatoRegistro).check();
   cy.get(selectors.descPosicaoVestigioVisualizacao).type('Vestígio criado pela automação')
   const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);

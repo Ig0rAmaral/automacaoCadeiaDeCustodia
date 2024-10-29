@@ -25,6 +25,7 @@ Cypress.Commands.add('origensDaColetaDisponiveis', () => {
 
 Cypress.Commands.add ('registraVestigioNaoDPT', () => {
   cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
   cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()
@@ -77,6 +78,7 @@ Cypress.Commands.add ('registraVestigioNaoDPT', () => {
 
 Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
   cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
   cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()
@@ -123,6 +125,7 @@ Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
 
 Cypress.Commands.add ('registraVestigioDPT', () => {
   cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximo');
+  cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
   cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()
@@ -194,6 +197,7 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
 
 Cypress.Commands.add ('salvarRascunhoVestígio', () => {
   cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
   cy.xpath(selectors.moduloRegistroVestigios, {timeout:15000}).should('be.visible').click()

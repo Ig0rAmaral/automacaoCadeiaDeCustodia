@@ -4,6 +4,7 @@ import selectors from "./selectors";
 
 Cypress.Commands.add ('consultaVestigioData', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -19,6 +20,7 @@ Cypress.Commands.add ('consultaVestigioData', () => {
 
 Cypress.Commands.add ('consultaVestigioLacre', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -103,6 +105,7 @@ Cypress.Commands.add ('consultaVestigioMatriculaColeta', () => {
 
 Cypress.Commands.add ('consultaVestigioInexistente', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -115,6 +118,7 @@ Cypress.Commands.add ('consultaVestigioInexistente', () => {
 })
 
 Cypress.Commands.add ('limparCamposConsulta', () => {
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -139,6 +143,7 @@ Cypress.Commands.add ('limparCamposConsulta', () => {
 
 Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -202,6 +207,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
 
 Cypress.Commands.add('permissaoVisualizarVestigio', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -225,6 +231,7 @@ Cypress.Commands.add('loginComoDPT', () => {
 
 Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
     cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()

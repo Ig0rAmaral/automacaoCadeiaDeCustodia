@@ -224,7 +224,7 @@ Cypress.Commands.add('permissaoVisualizarVestigio', () => {
 Cypress.Commands.add('loginComoDPT', () => {
     cy.get(selectors.campoUsuarioLogin).type(Cypress.env('usuarioDPT'))
     cy.get(selectors.campoSenhaLogin).type(Cypress.env('senhaDPT'))
-    cy.intercept('POST', '**/login').as('loginHome')
+    cy.intercept('POST', '**/authentication').as('loginHome')
     cy.get(selectors.botaoEntrarLogin).click()
     cy.wait('@loginHome', {timeout: 15000})
 })

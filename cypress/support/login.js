@@ -9,7 +9,7 @@ Cypress.Commands.add ('visitaSite', () => {
 Cypress.Commands.add ('loginComSucesso', () => {
     cy.get(selectors.campoUsuarioLogin).type(Cypress.env('usuario'))
     cy.get(selectors.campoSenhaLogin).type(Cypress.env('senha'))
-    cy.intercept('POST', '**/login').as('loginHome')
+    cy.intercept('POST', '**/authentication').as('loginHome')
     cy.get(selectors.botaoEntrarLogin).click()
     cy.wait('@loginHome', {timeout: 15000})
 })

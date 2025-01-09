@@ -201,7 +201,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
     cy.get(selectors.unidadeProcedimentoRelacionadoVisualizacao).should('contain.text', 'unidade teste')
     cy.get(selectors.autoridadeProcedimentoRelacionadoVisualizacao).should('contain.text', 'teste')
     cy.xpath(selectors.botaoExcluirProcedimentoRelacionadoVisualizacao).should('be.disabled')
-    })
+})
 })
 })
 

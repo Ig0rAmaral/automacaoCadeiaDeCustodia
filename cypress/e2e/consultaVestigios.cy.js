@@ -29,7 +29,7 @@ describe('Consulta e visualização de vestígios com usuário não DPT', () => 
     it('CT008 - Consultar vestígio inexistente', () => {
         cy.consultaVestigioInexistente()
     });
-    it('CT009 - Limpar campos de consulta de vestígios', () => {
+    it.only('CT009 - Limpar campos de consulta de vestígios', () => {
         cy.limparCamposConsulta()
     });
     it('CT010 - Visualizar vestígio NÃO DPT após consulta', () => {

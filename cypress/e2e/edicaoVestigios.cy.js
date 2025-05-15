@@ -9,7 +9,7 @@ describe('Edição de vestígio com usuário NÃO DPT', () => {
         cy.editarVestigioNaoDPT()
     });
     // it('CT002 - Editar vestígio NÃO DPT em modo rompimento de lacre com sucesso', () => {
-    //   cy.()
+    //   cy.edicaoRompimentoLacre()
     //   });
     it('CT005 - Consultar vestígio pelo parâmetro "DATA"', () => {
         cy.consultaVestigioDataEdicao()

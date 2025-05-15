@@ -24,7 +24,7 @@ Cypress.Commands.add('origensDaColetaDisponiveis', () => {
 
 
 Cypress.Commands.add ('registraVestigioNaoDPT', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.intercept('POST', '**/api2/vestigios').as('requestProximoRegistro');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
@@ -77,7 +77,7 @@ Cypress.Commands.add ('registraVestigioNaoDPT', () => {
 })
 
 Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.intercept('POST', '**/api2/vestigios').as('requestProximoRegistro');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
@@ -124,7 +124,7 @@ Cypress.Commands.add ('registraVestigioEntregaPorTerceiros', () => {
 })
 
 Cypress.Commands.add ('registraVestigioDPT', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximo');
+  cy.intercept('**/api2/vestigios/**').as('requestProximo');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
@@ -196,7 +196,7 @@ Cypress.Commands.add ('registraVestigioDPT', () => {
 })
 
 Cypress.Commands.add ('salvarRascunhoVestígio', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.intercept('POST', '**/api2/vestigios').as('requestProximoRegistro');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
@@ -227,7 +227,7 @@ Cypress.Commands.add ('salvarRascunhoVestígio', () => {
   cy.contains(valor).click()
   cy.get(selectors.localizacaoVisualizacaoVestigio).should('have.value', 'Valeria')
   cy.get(selectors.botaoCancelarRascunho).click()
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spCarregaMenuPrincipalreact&DataJson=.*/).as('requestMenuPrincipal');
+  cy.intercept('GET', '**/api2/menu/carrega-menu-principal*').as('requestMenuPrincipal');
   cy.xpath(selectors.simModalCancelarVestigio).click()
   cy.wait('@requestMenuPrincipal', {timeout: 15000}).then((interception) => {
   expect(interception.response.statusCode).to.equal(200);

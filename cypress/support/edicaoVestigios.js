@@ -22,10 +22,12 @@ Cypress.Commands.add('editarVestigioNaoDPT', () => {
     const valorSelecionado = $dropdown.text().trim()
     if (valorSelecionado === 'Alimentos') {
       cy.xpath(selectors.dropDownTipoVestigioRegistro).click()
+      cy.wait(500)
       cy.contains('li', 'Droga').scrollIntoView().click()
       cy.wrap('Droga').as('valorSelecionado');
     } else {
       cy.xpath(selectors.dropDownTipoVestigioRegistro).click()
+      cy.wait(500)
       cy.contains('li', 'Alimentos').scrollIntoView().click()
       cy.wrap('Alimentos').as('valorSelecionado');
     }
@@ -53,6 +55,18 @@ Cypress.Commands.add('editarVestigioNaoDPT', () => {
 });
 });
 })
+
+Cypress.Commands.add('edicaoRompimentoLacre', () => {
+  cy.wait(500)
+  cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
+  cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('be.visible').click()
+  cy.get(selectors.codigoRastreamentoConsulta).type('626SSP24')
+  cy.get(selectors.botaoPesquisarConsulta).click()
+  cy.get(selectors.botaoEdicaoVestigio).click()
+  cy.contains('button', 'Rompimento do Lacre').click()
+})
+
+
 
 Cypress.Commands.add ('editarVestigioDPT', () => {
   cy.wait(500)
@@ -92,10 +106,12 @@ Cypress.Commands.add ('editarVestigioDPT', () => {
     const valorSelecionado = $dropdown.text().trim()
     if (valorSelecionado === 'Alimentos') {
       cy.xpath(selectors.dropDownTipoVestigioRegistro).click()
+      cy.wait(500)
       cy.contains('li', 'Droga').scrollIntoView().click()
       cy.wrap('Droga').as('valorSelecionado');
     } else {
       cy.xpath(selectors.dropDownTipoVestigioRegistro).click()
+      cy.wait(500)
       cy.contains('li', 'Alimentos').scrollIntoView().click()
       cy.wrap('Alimentos').as('valorSelecionado');
     }
@@ -128,7 +144,7 @@ Cypress.Commands.add ('editarVestigioDPT', () => {
 })
 
 Cypress.Commands.add('consultaVestigioDataEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -143,7 +159,7 @@ Cypress.Commands.add('consultaVestigioDataEdicao', () => {
 })
 
 Cypress.Commands.add('consultaVestigioLacreEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -157,7 +173,7 @@ Cypress.Commands.add('consultaVestigioLacreEdicao', () => {
 })
 
 Cypress.Commands.add('consultaVestigioCodigoRastreamentoEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -171,7 +187,7 @@ Cypress.Commands.add('consultaVestigioCodigoRastreamentoEdicao', () => {
 })
 
 Cypress.Commands.add('consultaVestigioNomeColetaEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -185,7 +201,7 @@ Cypress.Commands.add('consultaVestigioNomeColetaEdicao', () => {
 })
 
 Cypress.Commands.add('consultaVestigioMatriculaColetaEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -199,7 +215,7 @@ Cypress.Commands.add('consultaVestigioMatriculaColetaEdicao', () => {
 })
 
 Cypress.Commands.add('consultaVestigioInexistenteEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -235,7 +251,7 @@ Cypress.Commands.add('limparCamposConsultaEdicao', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioNomePreservacaoEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()
@@ -249,7 +265,7 @@ Cypress.Commands.add ('consultaVestigioNomePreservacaoEdicao', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioMatriculaPreservacaoEdicao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesEditarVestigiosReact&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/filtro-edicao*').as('requestPesquisa');
   cy.wait(500)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloEdicaoDeVestigios, {timeout: 15000}).should('contain', 'Edição de Vestígios').click()

@@ -3,7 +3,7 @@
 import selectors from "./selectors";
 
 Cypress.Commands.add ('registrarVestigioParaLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximoRegistro');
+  cy.intercept('POST', '**/api2/vestigios').as('requestProximoRegistro');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.wait(1000)
@@ -47,6 +47,7 @@ Cypress.Commands.add ('registrarVestigioParaLiberacao', () => {
 })
 
 Cypress.Commands.add ('liberarVestigio', () => {
+  cy.intercept('PATCH', '**/api2/vestigios/liberar/*').as('requestLiberacaoVestigio');
   cy.xpath(selectors.moduloLiberacaoVestigios).click()
   cy.get('@numeroLacre').then((valor) => {
   cy.get(selectors.campoLacreConsultaEdicao).type(valor)
@@ -54,12 +55,15 @@ Cypress.Commands.add ('liberarVestigio', () => {
   cy.get(selectors.iconeInfoLiberacaoVestigio, {timeout: 15000}).should('be.visible').click()
   cy.contains('button', 'Liberar').click()
   cy.get(selectors.botaoSimLiberarVestigio).click()
+  cy.wait('@requestLiberacaoVestigio', {timeout: 15000}).then((interception) => {
+    expect(interception.response.statusCode).to.equal(200);
   cy.contains('Dados alterados com sucesso!', {timeout: 15000})
+})
 })
 })
 
 Cypress.Commands.add ('consultaVestigioDataLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -74,7 +78,7 @@ Cypress.Commands.add ('consultaVestigioDataLiberacao', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioLacreLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -88,7 +92,7 @@ Cypress.Commands.add ('consultaVestigioLacreLiberacao', () => {
 })
 
 Cypress.Commands.add('consultaVestigioCodRastreamentoLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -102,7 +106,7 @@ Cypress.Commands.add('consultaVestigioCodRastreamentoLiberacao', () => {
 })
 
 Cypress.Commands.add('consultaNomeRespPreservacaoLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -111,7 +115,7 @@ Cypress.Commands.add('consultaNomeRespPreservacaoLiberacao', () => {
 })
 
 Cypress.Commands.add('consultaMatriculaRespPreservacaoLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -125,7 +129,7 @@ Cypress.Commands.add('consultaMatriculaRespPreservacaoLiberacao', () => {
 })
 
 Cypress.Commands.add('consultaNomeRespColetaLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -139,7 +143,7 @@ Cypress.Commands.add('consultaNomeRespColetaLiberacao', () => {
 })
 
 Cypress.Commands.add('consultaMatriculaRespColetaLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()
@@ -153,7 +157,7 @@ Cypress.Commands.add('consultaMatriculaRespColetaLiberacao', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioInexistenteLiberacao', () => {
-  cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVestigiosCRUD&DataJson=.*/).as('requestPesquisa');
+  cy.intercept('GET', '**/api2/vestigios/consulta-para-transferencia*').as('requestPesquisa');
   cy.wait(1000)
   cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
   cy.xpath(selectors.moduloLiberacaoVestigios, {timeout: 15000}).should('contain', 'Liberação de Vestígios').click()

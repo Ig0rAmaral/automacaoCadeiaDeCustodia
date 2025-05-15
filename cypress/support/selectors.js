@@ -6,6 +6,9 @@ export default {
 campoUsuarioLogin: '#user',
 campoSenhaLogin: '#pass',
 botaoEntrarLogin: '#entrarButton',
+errorLoginIncorreto: '#alert-dialog-slide-description',
+inputMatriculaRecuperarSenha: 'input[name="userMatricula"]',
+inputCPFRecuperarSenha: 'input[name="userCPF"]',
 
 //Seletores do módulo de consulta da cadeia de custódia
 moduloCadeiaDeCustodia: ':nth-child(2) > .MuiStep-root > .MuiButtonBase-root',

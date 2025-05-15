@@ -3,7 +3,7 @@
 import selectors from "./selectors";
 
 Cypress.Commands.add ('consultaVestigioData', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?dataInicial=.*&dataFinal=.*/).as('requestPesquisa');
     cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
@@ -19,7 +19,7 @@ Cypress.Commands.add ('consultaVestigioData', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioLacre', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?lacre=.*/).as('requestPesquisa');
     cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
@@ -34,7 +34,7 @@ Cypress.Commands.add ('consultaVestigioLacre', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioCodigoRastreamento', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?rastreamento=.*/).as('requestPesquisa');
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -48,7 +48,7 @@ Cypress.Commands.add ('consultaVestigioCodigoRastreamento', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioNomePreservacao', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?nomePreservacao=.*/).as('requestPesquisa');
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -62,7 +62,7 @@ Cypress.Commands.add ('consultaVestigioNomePreservacao', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioMatriculaPreservacao', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?matriculaPreservacao=.*/).as('requestPesquisa');
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -76,7 +76,7 @@ Cypress.Commands.add ('consultaVestigioMatriculaPreservacao', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioNomeColeta', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?nomeColeta=.*/).as('requestPesquisa');
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -90,7 +90,7 @@ Cypress.Commands.add ('consultaVestigioNomeColeta', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioMatriculaColeta', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?matriculaColeta=.*/).as('requestPesquisa');
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
     cy.get(selectors.moduloConsultaDeVestígios).click()
@@ -104,7 +104,7 @@ Cypress.Commands.add ('consultaVestigioMatriculaColeta', () => {
 })
 
 Cypress.Commands.add ('consultaVestigioInexistente', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?rastreamento=.*/).as('requestPesquisa');
     cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
@@ -142,7 +142,7 @@ Cypress.Commands.add ('limparCamposConsulta', () => {
 })
 
 Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', /\/api2\/vestigios\/filtro\?rastreamento=.*/).as('requestPesquisa');
     cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
@@ -153,7 +153,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
     cy.wait('@requestPesquisa', {timeout: 15000}).then((interception) => {
         expect(interception.response.statusCode).to.eq(200);
     cy.contains(Cypress.env("codigoVestigioPadrao"))
-    cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact2&DataJson=.*/).as('requestVisualizacao');
+    cy.intercept('GET', /\/api2\/vestigios\/permissao-editar\/\d+\?/).as('requestVisualizacao');
     cy.get(selectors.botaoVisualizarVestigio).click()
     cy.wait('@requestVisualizacao', {timeout: 15000}).then((interception) => {
         expect(interception.response.statusCode).to.equal(200);
@@ -190,7 +190,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
     cy.contains('Natureza do Exame')
     cy.xpath(selectors.checkboxSimNaturezaExameVisualizacao).should('be.checked')
     cy.xpath(selectors.checkboxNaoNaturezaExameVisualizacao).should('not.be.checked')
-    cy.intercept('POST', '**/api/ServiceMopIonic/api/ExecutarPostGeral').as('proximaPagina')
+    cy.intercept('GET', '**/api2/vestigios/procedimentos/*').as('proximaPagina')
     cy.get(selectors.botaoProximoVisualizacao2).click()
     cy.wait('@proximaPagina', {timeout: 15000}).then((interception) => {
         expect(interception.response.statusCode).to.equal(200);
@@ -206,7 +206,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioPadrao', () => {
 })
 
 Cypress.Commands.add('permissaoVisualizarVestigio', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', '**/api2/vestigios/filtro*').as('requestPesquisa');
     cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
@@ -230,7 +230,7 @@ Cypress.Commands.add('loginComoDPT', () => {
 })
 
 Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
-    cy.intercept('GET', /\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact&DataJson=.*/).as('requestPesquisa');
+    cy.intercept('GET', '**/api2/vestigios/filtro*').as('requestPesquisa');
     cy.wait(500)
     cy.get(selectors.moduloCadeiaDeCustodia, {timeout: 15000}).should('be.visible').click()
     cy.get(selectors.moduloConsultaDeVestígios, {timeout: 15000}).should('contain', 'Consulta de Vestígios')
@@ -241,7 +241,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
     cy.wait('@requestPesquisa', {timeout: 15000}).then((interception) => {
     expect(interception.response.statusCode).to.eq(200);
     cy.contains(Cypress.env("codigoVestigioDPT2"))
-    cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaVestigioReact2&DataJson=.*/).as('requestVisualizacao');
+    cy.intercept('GET', '**/api2/vestigios/permissao-editar/*').as('requestVisualizacao');
     cy.get(selectors.botaoVisualizarVestigio).click()
     cy.wait('@requestVisualizacao', {timeout: 15000}).then((interception) => {
     expect(interception.response.statusCode).to.equal(200);
@@ -255,7 +255,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
     cy.get(selectors.unidadeResponsavelPreservacaoVisualizacao).should('have.value', '10ª DT - Pau da Lima')
     cy.get(selectors.dataChegadaResponsavelPreservacaoVisualizacao).should('have.value', '12/09/2024')
     cy.get(selectors.horaChegadaResponsavelPreservacaoVisualizacao).should('have.value', '15:02')
-    cy.intercept(/\/api\/ServiceMopIonic\/api\/Executar\?StoreProcName=spVesConsultaTabelaReact&DataJson=.*/).as('requestProximo');
+    cy.intercept('GET', '**/api2/vestigios/*').as('requestProximo');
     cy.get(selectors.botaoProximoVisualizacao1).click()
     cy.wait('@requestProximo', {timeout: 15000}).then((interception) => {
     expect(interception.response.statusCode).to.equal(200);
@@ -286,7 +286,7 @@ Cypress.Commands.add ('consultaVisualizaVestigioDPT', () => {
     cy.contains('Natureza do Exame')
     cy.xpath(selectors.checkboxSimNaturezaExameVisualizacao).should('be.checked')
     cy.xpath(selectors.checkboxNaoNaturezaExameVisualizacao).should('not.be.checked')
-    cy.intercept('POST', '**/api/ServiceMopIonic/api/ExecutarPostGeral').as('proximaPagina')
+    cy.intercept('GET', '**/api2/vestigios/procedimentos/*').as('proximaPagina')
     cy.get(selectors.botaoProximoVisualizacao2).click()
     cy.wait('@proximaPagina', {timeout: 15000}).then((interception) => {
     expect(interception.response.statusCode).to.equal(200);
